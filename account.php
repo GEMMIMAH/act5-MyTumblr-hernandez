@@ -1,3 +1,19 @@
+<?php
+//start the session
+SESSION_START();
+
+//check if the session variables are set or if it is existing
+//this is to check if the account is login or not
+if (isset($_SESSION['ses_username'])===false){
+    header("Location: index.php?logfirst");
+
+}else if (isset($_REQUEST['logout'])===true){
+    session_destroy();
+    header("Location: index.php?logout");
+}
+
+?>
+
 <!doctype html>
                         <html>
                             <head>
@@ -32,13 +48,19 @@ body {
         <div class="bg-white shadow rounded overflow-hidden">
             <div class="px-4 pt-0 pb-4 cover">
                 <div class="media align-items-end profile-head">
-                    <div class="profile mr-3"><img src="images/photo-profile.jpg" alt="..." width="150" class="rounded mb-2 img-thumbnail"><a href="#" class="btn btn-outline-dark btn-sm btn-block">Edit Profile</a>
+                    <div class="profile mr-3"><img src="images/photo-profile.jpg" alt="..." width="150" class="rounded mb-2 img-thumbnail">
+
+                        <a href="?logout" class="btn btn-outline-dark btn-sm btn-block">Sign Out</a>
 
 
                     </div>
                     <div class="media-body mb-5 text-white">
-                        <h4 class="mt-0 mb-0">Gemmimah S. Hernandez</h4>
-                        <p class="small mb-4"> <i class="fas fa-map-marker-alt mr-2"></i>Gasan Marinduque PH
+
+                        <h4 class="mt-0 mb-0"> <?php echo $_SESSION['ses_fullname']; ?> </h4>
+                        <p class="small mb-4"> <i class="fas fa-map-marker-alt mr-2"></i>
+
+                            <?php echo $_SESSION['ses_address']; ?>
+
                          </p>
                     </div>
                 </div>
@@ -49,10 +71,10 @@ body {
                         <h5 class="font-weight-bold mb-0 d-block">125</h5><small class="text-muted"> <i class="fas fa-image mr-1"></i>Photos</small>
                     </li>
                     <li class="list-inline-item">
-                        <h5 class="font-weight-bold mb-0 d-block">956,450</h5><small class="text-muted"> <i class="fas fa-user mr-1"></i>Followers</small>
+                        <h5 class="font-weight-bold mb-0 d-block">959,999</h5><small class="text-muted"> <i class="fas fa-user mr-1"></i>Followers</small>
                     </li>
                     <li class="list-inline-item">
-                        <h5 class="font-weight-bold mb-0 d-block">2</h5><small class="text-muted"> <i class="fas fa-user mr-1"></i>Following</small>
+                        <h5 class="font-weight-bold mb-0 d-block">15</h5><small class="text-muted"> <i class="fas fa-user mr-1"></i>Following</small>
                     </li>
                 </ul>
             </div>
@@ -60,9 +82,9 @@ body {
             <div class="px-4 py-3">
                 <h5 class="mb-0">Quotes in Life </h5>
                 <div class="p-4 rounded shadow-sm bg-light">
-                    <p class="font-italic mb-0">Be at peace, And appreciate life</p>
-                    <p class="font-italic mb-0">Set limits, not everyone is worthy</p>
-                    <p class="font-italic mb-0">Run to, not from</p>
+                    <p class="font-italic mb-0">Be at peace, And appreciate life💖</p>
+                    <p class="font-italic mb-0">Set limits, not everyone is worthy👀</p>
+                    <p class="font-italic mb-0">Run to, not from😊</p>
                 </div>
             </div>
 
